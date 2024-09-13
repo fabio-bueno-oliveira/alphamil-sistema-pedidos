@@ -11,6 +11,8 @@ import {
 // import NotFound from './pages/NotFound'
 import Login from './pages/Login';
 import Home from './pages/Home';
+import Clientes from './pages/Clientes';
+import Cliente from './pages/Cliente';
 
 function AppRoutes () {
 
@@ -33,6 +35,8 @@ function AppRoutes () {
                 <Route path="/" element={<Login />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/home" element={<Home />} />
+                <Route path="/clientes" element={<Clientes />} />
+                <Route path="/cliente/:id" element={<Cliente />} />
                 {/* <Route element={<RequireAuth />}>
                     <Route path="/home" element={<Home />} />
                 </Route>
