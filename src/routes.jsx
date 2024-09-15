@@ -13,6 +13,8 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Clientes from './pages/Clientes';
 import Cliente from './pages/Cliente';
+import Pedidos from './pages/Pedidos';
+import PedidoDetalhe from './pages/Pedidos/pedido';
 
 function AppRoutes () {
 
@@ -37,6 +39,8 @@ function AppRoutes () {
                 <Route path="/home" element={<Home />} />
                 <Route path="/clientes" element={<Clientes />} />
                 <Route path="/cliente/:id" element={<Cliente />} />
+                <Route path="/pedidos" element={<Pedidos />} />
+                <Route path="/pedido/:id" element={<PedidoDetalhe />} />
                 {/* <Route element={<RequireAuth />}>
                     <Route path="/home" element={<Home />} />
                 </Route>

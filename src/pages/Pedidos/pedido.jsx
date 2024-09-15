@@ -7,13 +7,13 @@ import Button from 'react-bootstrap/Button';
 import Menu from '../../components/menu';
 import Form from 'react-bootstrap/Form';
 
-function Cliente () {
+function Pedido () {
 
   const BASE_URL = 'https://alphamil-6c4405384cad.herokuapp.com';
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [cliente, setCliente] = useState({
+  const [pedido, setPedido] = useState({
     id: null,
     nome: null,
     endereco: null,
@@ -30,15 +30,15 @@ function Cliente () {
   });
 
   useEffect(() => {
-    const carregaCliente = () => {
+    const carregaPedido = () => {
       setIsLoading(true);
-      fetch(`${BASE_URL}/cliente/${id}`)
+      fetch(`${BASE_URL}/pedido/${id}`)
         .then(response => response.json())
-        .then(data => setCliente(data))
+        .then(data => setPedido(data))
         .then(setIsLoading(false))
         .catch(error => console.error(error));
     }
-    carregaCliente();
+    carregaPedido();
   }, []);
 
   return (
@@ -46,7 +46,7 @@ function Cliente () {
       <Menu />
       <Container>
         <Row className="py-4">
-          <Col><h1>Cliente</h1></Col>
+          <Col><h1>Pedido</h1></Col>
           <Col align="end">
             {/* <Button onClick={() => setIsEditing(value => !value)}>
               Editar dados do Cliente
@@ -66,7 +66,7 @@ function Cliente () {
                     <Form.Control
                       id="formNomeEmpresa"
                       placeholder="Insira o nome da Empresa"
-                      defaultValue={cliente.nome}
+                      defaultValue={pedido.nome}
                     />
                   </Form.Group>
                 </Col>
@@ -75,7 +75,7 @@ function Cliente () {
                     <Form.Label>CEP</Form.Label>
                     <Form.Control
                       id="formCep"
-                      defaultValue={cliente.endereco_cep}
+                      defaultValue={pedido.endereco_cep}
                     />
                   </Form.Group>
                 </Col>
@@ -87,7 +87,7 @@ function Cliente () {
                     <Form.Control
                       id="formEndereco"
                       placeholder="Insira o endereço da Empresa (Rua, Avenida, etc)"
-                      defaultValue={cliente.endereco}
+                      defaultValue={pedido.endereco}
                     />
                   </Form.Group>
                 </Col>
@@ -97,7 +97,7 @@ function Cliente () {
                     <Form.Control
                       id="formEnderecoNumero"
                       placeholder="Insira o número do endereço (opcional)"
-                      defaultValue={cliente.endereco_numero}
+                      defaultValue={pedido.endereco_numero}
                     />
                   </Form.Group>
                 </Col>
@@ -109,7 +109,7 @@ function Cliente () {
                     <Form.Control
                       id="formBairro"
                       placeholder="Insira o bairro"
-                      defaultValue={cliente.endereco_bairro}
+                      defaultValue={pedido.endereco_bairro}
                     />
                   </Form.Group>
                 </Col>
@@ -119,7 +119,7 @@ function Cliente () {
                     <Form.Control
                       id="formComplemento"
                       placeholder="Ex: Apartamento, Bloco, etc (opcional)"
-                      defaultValue={cliente.endereco_complemento}
+                      defaultValue={pedido.endereco_complemento}
                     />
                   </Form.Group>
                 </Col>
@@ -132,7 +132,7 @@ function Cliente () {
                       id="formCidade"
                       disabled
                       placeholder="Insira a Cidade"
-                      defaultValue={cliente.endereco_cidade}
+                      defaultValue={pedido.endereco_cidade}
                     />
                   </Form.Group>
                 </Col>
@@ -143,7 +143,7 @@ function Cliente () {
                       id="formEstado"
                       disabled
                       placeholder="Insira o Estado"
-                      defaultValue={cliente.endereco_estado}
+                      defaultValue={pedido.endereco_estado}
                     />
                   </Form.Group>
                 </Col>
@@ -156,7 +156,7 @@ function Cliente () {
                       id="formObservacoes"
                       as="textarea" rows={3}
                       placeholder="Observações ou notas importantes sobre o Cliente"
-                      defaultValue={cliente.observacoes}
+                      defaultValue={pedido.observacoes}
                     />
                   </Form.Group>
                 </Col>
@@ -172,4 +172,4 @@ function Cliente () {
   );
 };
 
-export default Cliente;
+export default Pedido;
