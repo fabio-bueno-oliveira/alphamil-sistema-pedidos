@@ -15,6 +15,7 @@ function Pedidos () {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     const carregaPedidos = async () => {
       try {
         let res = await fetch(`${BASE_URL}/pedidos`);
@@ -40,34 +41,43 @@ function Pedidos () {
         <Row>
           <Col>
             <h1>Pedidos</h1>
+          </Col>
+          <Col align="end">
             <Button>Cadastrar novo pedido</Button>
-            {isLoading && <Badge bg="secondary">Carregando...</Badge>}
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>ID Sistema</th>
-                  <th>ID Pedido Impresso</th>
-                  <th>Data do pedido</th>
-                  <th>Cliente</th>
-                  <th>Itens</th>
-                  <th>Status entrega</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {pedidos.map((pedido, key) =>
-                  <tr key={key}>
-                    <td>{pedido.id}</td>
-                    <td>{pedido.id_pedido_impresso}</td>
-                    <td>{pedido.data_pedido_realizado}</td>
-                    <td>{pedido.cliente}</td>
-                    <td>{pedido.itens}</td>
-                    <td>{pedido.status_entrega}</td>
-                    <td><a href={`/pedido/${pedido.id}`}>Detalhes</a></td>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {isLoading ?
+              <h3>Carregando...</h3>
+            :
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>ID Sistema</th>
+                    <th>ID Pedido Impresso</th>
+                    <th>Data do pedido</th>
+                    <th>Cliente</th>
+                    <th>Itens</th>
+                    <th>Status entrega</th>
+                    <th></th>
                   </tr>
-                )}
-              </tbody>
-            </Table>
+                </thead>
+                <tbody>
+                  {pedidos.map((pedido, key) =>
+                    <tr key={key}>
+                      <td>{pedido.id}</td>
+                      <td>{pedido.id_pedido_impresso}</td>
+                      <td>{pedido.data_pedido_realizado}</td>
+                      <td>{pedido.cliente}</td>
+                      <td>{pedido.itens}</td>
+                      <td>{pedido.status_entrega}</td>
+                      <td><a href={`/pedido/${pedido.id}`}>Detalhes</a></td>
+                    </tr>
+                  )}
+                </tbody>
+              </Table>
+            }
           </Col>
         </Row>
       </Container>
